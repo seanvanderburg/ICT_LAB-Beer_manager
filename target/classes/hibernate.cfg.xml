@@ -7,10 +7,10 @@
     <session-factory>
 
         <!-- Database connection settings -->
-        <property name="connection.driver_class"></property>
-        <property name="connection.url"></property>
-        <property name="connection.username"></property>
-        <property name="connection.password"></property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/managementdb</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">boeing707</property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">5</property>
@@ -18,7 +18,7 @@
         <property name="hibernate.connection.isolation">2</property>
 
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
 
 		
         <!-- Enable Hibernate's automatic session context management -->
@@ -40,9 +40,7 @@
         <property name="hbm2ddl.auto">update</property>
 
 
-        <mapping class="entities.Character" />
-        <mapping class="entities.Player"/>
-        <mapping class="entities.Server"/>
+        <mapping class="com.entities.Bottle" />
       
     </session-factory>
 </hibernate-configuration>

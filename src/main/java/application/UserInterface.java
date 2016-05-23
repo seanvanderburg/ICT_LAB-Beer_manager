@@ -1,4 +1,4 @@
-package Main;
+package application;
 
 public class UserInterface {
 

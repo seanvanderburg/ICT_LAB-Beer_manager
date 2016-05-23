@@ -29,7 +29,7 @@ public class Bottle {
         this.name = name;
     }
 
-	@Column(name = "player_id", unique = true, nullable = false)
+	@Column(name = "bottle_id", unique = true, nullable = false)
     public Long getId() {
         return id;
     }
