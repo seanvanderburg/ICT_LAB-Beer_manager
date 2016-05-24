@@ -4,6 +4,8 @@ import java.util.List;
 import org.hibernate.Session;
 
 import entities.Bottle;
+import entities.Drink;
+import entities.Neigbourhood;
 
 public class Transactions {
 	public void addBottle() {
@@ -21,8 +23,12 @@ public class Transactions {
 //		} else {
 			Bottle bottle = new Bottle();
 		    session.save(bottle);  
+		    Neigbourhood n = new Neigbourhood();
+		    session.save(n);  
+		    Drink d = new Drink();
+		    session.save(d);  
 		    session.getTransaction().commit();  
-
+		    System.out.println("done");
 //		}
 	}
 }

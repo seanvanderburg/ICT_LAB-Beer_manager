@@ -41,6 +41,9 @@
 
 
         <mapping class="entities.Bottle" />
+        <mapping class="entities.Neigbourhood" />
+        <mapping class="entities.Drink" />
+        
       
     </session-factory>
 </hibernate-configuration>

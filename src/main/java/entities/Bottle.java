@@ -1,10 +1,13 @@
 package entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Bottle {
@@ -15,6 +18,9 @@ public class Bottle {
     private double height;
     private double capacity;
 	private String dateScanned;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Drink drink;
   
     public Bottle() {}
 
@@ -67,6 +73,15 @@ public class Bottle {
 
 	public void setDateScanned(String dateScanned) {
 		this.dateScanned = dateScanned;
+	}
+	
+
+	public Drink getDrink() {
+		return drink;
+	}
+
+	public void setDrink(Drink drink) {
+		this.drink = drink;
 	}
 
 	@Override
