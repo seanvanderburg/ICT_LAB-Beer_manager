@@ -18,7 +18,7 @@
         <property name="hibernate.connection.isolation">2</property>
 
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
 		
         <!-- Enable Hibernate's automatic session context management -->
@@ -40,7 +40,7 @@
         <property name="hbm2ddl.auto">update</property>
 
 
-        <mapping class="com.entities.Bottle" />
+        <mapping class="entities.Bottle" />
       
     </session-factory>
 </hibernate-configuration>
