@@ -28,7 +28,7 @@ public class Drink {
     private Set<Bottle> bottles = new HashSet<Bottle>();
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private Neigbourhood neigbourhood;
+	private Neighbourhood neigbourhood;
 
 	public Drink() {
 	}
@@ -91,11 +91,11 @@ public class Drink {
 		this.bottles = bottles;
 	}
 
-	public Neigbourhood getNeigbourhood() {
+	public Neighbourhood getNeigbourhood() {
 		return neigbourhood;
 	}
 
-	public void setNeigbourhood(Neigbourhood neigbourhood) {
+	public void setNeigbourhood(Neighbourhood neigbourhood) {
 		this.neigbourhood = neigbourhood;
 	}
 

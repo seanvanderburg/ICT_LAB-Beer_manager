@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Neigbourhood {
+public class Neighbourhood {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -22,10 +22,10 @@ public class Neigbourhood {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Drink drink;
 
-	public Neigbourhood() {
+	public Neighbourhood() {
 	}
 
-	public Neigbourhood(String name, String city, Date description) {
+	public Neighbourhood(String name, String city, Date description) {
 		this();
 		this.name = name;
 		this.city = city;
