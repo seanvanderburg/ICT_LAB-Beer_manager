@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class UserInterface {
-	//layout components
+	// layout components
 
 	JFrame frame = new JFrame("BottleScanner ManagementApp");
 	static JPanel panelCont = new JPanel();
@@ -27,59 +27,48 @@ public class UserInterface {
 	JButton newDrink = new JButton("voeg drank toe");
 	JButton newBottle = new JButton("voeg fles toe");
 	JButton newNeighbourhood = new JButton("voeg buurt toe");
-	
+
 	JButton backA = new JButton("Terug");
 	JButton backB = new JButton("Terug");
 	JButton backC = new JButton("Terug");
 
+	JButton confirmA = new JButton("Invoeren");
+	JButton confirmB = new JButton("Invoeren");
+	JButton confirmC = new JButton("Invoeren");
 
 	static CardLayout cl = new CardLayout();
 
-	private final JTextField txtMerk = new JTextField();
-	private final JTextField txtLengte = new JTextField();
-	private final JTextField txtCapaciteit = new JTextField();
-	private final JTextField txtDatumGescand = new JTextField();
-	private final JLabel lblVoerFlesgegevensIn = new JLabel("Voer Flesgegevens in");
-	private final JTextField txtdrinktype = new JTextField();
-	private final JTextField txtdrinkname = new JTextField();
-	private final JTextField txtdatefounded = new JTextField();
-	private final JLabel lblVoerDrankgegevensIn = new JLabel("Voer Drankgegevens in");
-	private final JTextField txtneigname;
-	private final JTextField txtneigcity;
-	private final JTextField txtneigdescr;
-	private final JLabel lblVoerBuurtgegevensIn = new JLabel("Voer Buurtgegevens in");
-	private final JRadioButton rdbtnBeschikbaar = new JRadioButton("Beschikbaar");
-
-	
+	JTextField txtwidth = new JTextField();
+	JTextField txtlength = new JTextField();
+	JTextField txtcapacity = new JTextField();
+	JTextField txtdatescanned = new JTextField();
+	JLabel lblinsertbottledata = new JLabel("Voer Flesgegevens in");
+	JTextField txtdrinktype = new JTextField();
+	JTextField txtdrinkname = new JTextField();
+	JTextField txtdatefounded = new JTextField();
+	JLabel lblinsertdrinkdata = new JLabel("Voer Drankgegevens in");
+	JTextField txtneigname;
+	JTextField txtneigcity;
+	JTextField txtneigdescr;
+	JLabel lblinsertneighbdata = new JLabel("Voer Buurtgegevens in");
+	JRadioButton rdbtnBeschikbaar = new JRadioButton("Beschikbaar");
 
 	public UserInterface() {
-		txtDatumGescand.setText("Datum gescand");
-		txtDatumGescand.setBounds(189, 156, 112, 20);
-		txtDatumGescand.setColumns(10);
-		txtCapaciteit.setText("Capaciteit");
-		txtCapaciteit.setBounds(189, 125, 112, 20);
-		txtCapaciteit.setColumns(10);
-		txtLengte.setText("Lengte");
-		txtLengte.setBounds(189, 63, 112, 20);
-		txtLengte.setColumns(10);
-		txtMerk.setBounds(189, 94, 112, 20);
-		txtMerk.setText("Breedte");
-		txtMerk.setColumns(10);
-		
-		
-		//build the frontend using the components
+
+		// build the frontend using the components
 		panelCont.setLayout(cl);
-		
+
 		newDrink.setPreferredSize(new Dimension(200, 40));
 		newBottle.setPreferredSize(new Dimension(200, 40));
 		newNeighbourhood.setPreferredSize(new Dimension(200, 40));
 
 		// menu elements
-		panelMenu.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
+		panelMenu
+				.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
 		panelMenu.add(newDrink);
 		panelMenu.add(newBottle);
 		panelMenu.add(newNeighbourhood);
-		
+
 		// main container
 		panelCont.add(panelMenu, "1");
 		panelCont.add(panelBottle, "2");
@@ -87,134 +76,189 @@ public class UserInterface {
 		panelCont.add(panelNeighbourhood, "4");
 
 		cl.show(panelCont, "1");
-	
+
 		newNeighbourhood.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cl.show(panelCont, "4");
 			}
 		});
-		
-		//actionlisteners to react on user input
+
+		// actionlisteners to open new menus
 		newDrink.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cl.show(panelCont, "3");
 			}
 		});
-		
+
 		newBottle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cl.show(panelCont, "2");
 			}
 		});
-		
-		//Frame properties
+
+		// Frame properties
 		frame.getContentPane().add(panelCont);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(300, 300));
+		frame.setMinimumSize(new Dimension(300, 300));
 		frame.setVisible(true);
 		frame.setSize(500, 500);
 
 		panelMenu.setSize(50, 50);
-		
-		//GUI element properties
-		
+
+		// GUI element properties
+		txtdatescanned.setText("Datum gescand");
+		txtdatescanned.setBounds(189, 156, 112, 20);
+		txtdatescanned.setColumns(10);
+		txtcapacity.setText("Capaciteit");
+		txtcapacity.setBounds(189, 125, 112, 20);
+		txtcapacity.setColumns(10);
+		txtlength.setText("Lengte");
+		txtlength.setBounds(189, 63, 112, 20);
+		txtlength.setColumns(10);
+		txtwidth.setBounds(189, 94, 112, 20);
+		txtwidth.setText("Breedte");
+		txtwidth.setColumns(10);
+
 		panelBottle.setSize(50, 50);
 		panelBottle.setLayout(null);
-		panelBottle.add(txtLengte);
-		panelBottle.add(txtCapaciteit);
-		panelBottle.add(txtDatumGescand);
-		panelBottle.add(txtMerk);
+		panelBottle.add(txtlength);
+		panelBottle.add(txtcapacity);
+		panelBottle.add(txtdatescanned);
+		panelBottle.add(txtwidth);
 
-		lblVoerFlesgegevensIn.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblVoerFlesgegevensIn.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVoerFlesgegevensIn.setBounds(146, 11, 192, 31);
-		panelBottle.add(lblVoerFlesgegevensIn);
+		lblinsertbottledata.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblinsertbottledata.setHorizontalAlignment(SwingConstants.CENTER);
+		lblinsertbottledata.setBounds(146, 11, 192, 31);
+		
+		panelBottle.add(lblinsertbottledata);
 		panelBottle.add(backA);
+		panelBottle.add(confirmA);
 		
-		backA.setLocation(189, 201);
-		backA.setSize(112, 44);
-		backA.setPreferredSize(new Dimension(200,20));
-		backA.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				cl.show(panelCont, "1");
-			}
-			
-		});
 		
-		backB.setLocation(189, 201);
-		backB.setSize(112, 44);
-		backB.setPreferredSize(new Dimension(200,20));
-		backB.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				cl.show(panelCont, "1");
-			}
-			
-		});
-		
-		backC.setLocation(189, 201);
-		backC.setSize(112, 44);
-		backC.setPreferredSize(new Dimension(200,20));
-		backC.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				cl.show(panelCont, "1");
-			}
-			
-		});
-
 		panelNeighbourhood.setSize(50, 50);
 		panelNeighbourhood.setLayout(null);
-		
+
 		txtneigname = new JTextField();
 		txtneigname.setBounds(201, 41, 86, 20);
 		txtneigname.setText("Naam");
 		txtneigname.setColumns(10);
 		panelNeighbourhood.add(txtneigname);
-		
+
 		txtneigcity = new JTextField();
 		txtneigcity.setBounds(201, 72, 86, 20);
 		txtneigcity.setText("Stad");
 		txtneigcity.setColumns(10);
 		panelNeighbourhood.add(txtneigcity);
-		
+
 		txtneigdescr = new JTextField();
 		txtneigdescr.setBounds(201, 103, 86, 20);
 		txtneigdescr.setText("Beschrijving");
 		txtneigdescr.setColumns(10);
 		panelNeighbourhood.add(txtneigdescr);
+
+		lblinsertneighbdata.setBounds(153, 11, 173, 19);
+		lblinsertneighbdata.setHorizontalAlignment(SwingConstants.CENTER);
+		lblinsertneighbdata.setFont(new Font("Tahoma", Font.BOLD, 15));
 		
-		lblVoerBuurtgegevensIn.setBounds(153, 11, 173, 19);
-		lblVoerBuurtgegevensIn.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVoerBuurtgegevensIn.setFont(new Font("Tahoma", Font.BOLD, 15));
-		panelNeighbourhood.add(lblVoerBuurtgegevensIn);
+		panelNeighbourhood.add(lblinsertneighbdata);
 		panelNeighbourhood.add(backB);
-		
+		panelNeighbourhood.add(confirmB);
+
 		panelDrink.setSize(50, 50);
 		panelDrink.setLayout(null);
 		txtdrinktype.setText("Type");
 		txtdrinktype.setColumns(10);
 		txtdrinktype.setBounds(189, 63, 112, 20);
 		panelDrink.add(txtdrinktype);
-		
+
 		txtdrinkname.setText("Naam");
 		txtdrinkname.setColumns(10);
 		txtdrinkname.setBounds(189, 94, 112, 20);
 		panelDrink.add(txtdrinkname);
-		
+
 		txtdatefounded.setText("Datum gelanceerd");
 		txtdatefounded.setColumns(10);
 		txtdatefounded.setBounds(189, 125, 112, 20);
 		panelDrink.add(txtdatefounded);
-		
-		lblVoerDrankgegevensIn.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVoerDrankgegevensIn.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblVoerDrankgegevensIn.setBounds(146, 11, 192, 31);
-		panelDrink.add(lblVoerDrankgegevensIn);		
+
+		lblinsertdrinkdata.setHorizontalAlignment(SwingConstants.CENTER);
+		lblinsertdrinkdata.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblinsertdrinkdata.setBounds(146, 11, 192, 31);
+		panelDrink.add(lblinsertdrinkdata);
 		panelDrink.add(backC);
-		
+		panelDrink.add(confirmC);
+
 		rdbtnBeschikbaar.setBounds(189, 174, 112, 23);
-		panelDrink.add(rdbtnBeschikbaar);	
+		panelDrink.add(rdbtnBeschikbaar);
+
+		backA.setLocation(189, 201);
+		backA.setSize(112, 44);
+		backA.setPreferredSize(new Dimension(200, 20));
+		backA.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cl.show(panelCont, "1");
+			}
+
+		});
+
+		backB.setLocation(189, 201);
+		backB.setSize(112, 44);
+		backB.setPreferredSize(new Dimension(200, 20));
+		backB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cl.show(panelCont, "1");
+			}
+
+		});
+
+		backC.setLocation(189, 201);
+		backC.setSize(112, 44);
+		backC.setPreferredSize(new Dimension(200, 20));
+		backC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cl.show(panelCont, "1");
+			}
+
+		});
 		
+		confirmA.setLocation(189, 256);
+		confirmA.setSize(112, 44);
+		confirmA.setPreferredSize(new Dimension(200, 20));
+		confirmA.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String capacity = txtcapacity.getText();
+				String width = txtwidth.getText();
+				String length = txtlength.getText();
+				String datescanned = txtdatescanned.getText();
+				Transactions.addBottle(capacity, width, length, datescanned);
+			}
+		});
+		
+		confirmB.setLocation(189, 256);
+		confirmB.setSize(112, 44);
+		confirmB.setPreferredSize(new Dimension(200, 20));
+		confirmB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String capacity = txtcapacity.getText();
+				String width = txtwidth.getText();
+				String length = txtlength.getText();
+				String datescanned = txtdatescanned.getText();
+				Transactions.addBottle(capacity, width, length, datescanned);
+			}
+		});
+		
+		confirmC.setLocation(189, 256);
+		confirmC.setSize(112, 44);
+		confirmC.setPreferredSize(new Dimension(200, 20));
+		confirmC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String capacity = txtcapacity.getText();
+				String width = txtwidth.getText();
+				String length = txtlength.getText();
+				String datescanned = txtdatescanned.getText();
+				Transactions.addBottle(capacity, width, length, datescanned);
+			}
+		});
+
 	}
 }
-
-

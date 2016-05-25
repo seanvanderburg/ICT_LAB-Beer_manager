@@ -21,7 +21,7 @@ public class Drink {
 	private Long id;
 	private String drinkType;
 	private String drinkName;
-	private Date dateFounded;
+	private String dateFounded;
 	private boolean availability;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="drink", cascade = CascadeType.ALL) 
@@ -33,7 +33,7 @@ public class Drink {
 	public Drink() {
 	}
 	
-	public Drink(String drinkType, String drinkName, Date dateFounded,
+	public Drink(String drinkType, String drinkName, String dateFounded,
 			boolean availability) {
 		this();
 		this.drinkType = drinkType;
@@ -67,11 +67,11 @@ public class Drink {
 		this.drinkName = drinkName;
 	}
 
-	public Date getDateFounded() {
+	public String getDateFounded() {
 		return dateFounded;
 	}
 
-	public void setDateFounded(Date dateFounded) {
+	public void setDateFounded(String dateFounded) {
 		this.dateFounded = dateFounded;
 	}
 

@@ -8,7 +8,7 @@ import entities.Drink;
 import entities.Neighbourhood;
 
 public class Transactions {
-	public void addBottle() {
+	public static void addBottle(String capacity, String width, String height, String dateScanned) {
 		//check if bottle is present in db, if the bottle data is found toggle warning
 		Session session = (Session) HibernateUtil.getSessionFactory()
 				.getCurrentSession();
@@ -22,6 +22,11 @@ public class Transactions {
 //		if (result.isEmpty() || result == null) {
 //		} else {
 			Bottle bottle = new Bottle();
+			System.out.println(capacity);
+			bottle.setCapacity(capacity);
+			bottle.setWidth(width);
+			bottle.setHeight(height);
+			bottle.setDateScanned(dateScanned);
 		    session.save(bottle);  
 		    session.getTransaction().commit();  
 		    System.out.println("Done");

@@ -14,9 +14,9 @@ public class Bottle {
     @Id 
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private double width;
-    private double height;
-    private double capacity;
+    private String width;
+    private String height;
+    private String capacity;
 	private String dateScanned;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -24,8 +24,8 @@ public class Bottle {
   
     public Bottle() {}
 
-    public Bottle(double width, double height,
-			double capacity, String dateScanned) {
+    public Bottle(String width, String height,
+			String capacity, String dateScanned) {
 		this();
 		this.width = width;
 		this.height = height;
@@ -43,27 +43,27 @@ public class Bottle {
         this.id = id;
     }
 
-	public double getWidth() {
+	public String getWidth() {
 		return width;
 	}
 
-	public void setWidth(double width) {
+	public void setWidth(String width) {
 		this.width = width;
 	}
 
-	public double getHeight() {
+	public String getHeight() {
 		return height;
 	}
 
-	public void setHeight(double height) {
+	public void setHeight(String height) {
 		this.height = height;
 	}
 
-	public double getCapacity() {
+	public String getCapacity() {
 		return capacity;
 	}
 
-	public void setCapacity(double capacity) {
+	public void setCapacity(String capacity) {
 		this.capacity = capacity;
 	}
 
