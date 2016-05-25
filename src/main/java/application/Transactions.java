@@ -28,7 +28,7 @@ public class Transactions {
 		    Drink d = new Drink();
 		    session.save(d);  
 		    session.getTransaction().commit();  
-		    System.out.println("done");
+		    System.out.println("Done");
 //		}
 	}
 }
