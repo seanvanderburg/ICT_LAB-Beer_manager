@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Spring Boot!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/styles.css"
+          th:href="@{/css/styles.css}"
+          rel="stylesheet" media="screen" />
+</head>
+<body>
+<div id="header">
+		<nav>
+		    
+			<ul class="menu">
+				<li class="active"><b></b><a href="index.html">Drank toevoegen</a></li>
+				<li><b></b><a href="over.html">Buurt toevoegen</a></li>
+				
+			</ul>
+		</nav>
+</div>
+<div id="container">
+<div id="tekst">
+<h2>Drank</h2>
+<br></br>
+Voeg hier een drank toe.
+<form action="#" th:action="@{/}" th:object="${drink}" method="post">
+<table>
+                <tr>
+                    <td>Naam:</td>
+                    <td><input type="text" th:field="*{drinkName}" /></td>
+                </tr>
+                <tr>
+                    <td>Type:</td>
+                    <td><input type="text" th:field="*{drinkType}" /></td>
+                </tr>
+                <tr>
+                    <td>Datum gelanceerd:</td>
+                    <td><input type="text" th:field="*{dateFounded}" /></td>
+                </tr>
+                <tr>
+                    <td>Beschikbaarheid (true/false):</td>
+                    <td><input type="text" th:field="*{availability}" /></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+</form>
+            
+</div>
+
+</div>
+<div id="footer">
+Sean van der Burg, 2015
+</div>
+
+</body>
+</html>
