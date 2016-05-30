@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beer manager</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/styles.css"
+          th:href="@{/css/styles.css}"
+          rel="stylesheet" media="screen" />
+</head>
+<body>
+<div id="header">
+		<nav>
+		    
+			<ul class="menu">
+				<li class="active"><b></b><a href="index.html">Drank toevoegen</a></li>
+				<li><b></b><a href="over.html">Drink toevoegen</a></li>
+				
+			</ul>
+		</nav>
+</div>
+<div id="container">
+<div id="tekst">
+<h1>Drank</h1>
+    <h2>Voeg een nieuwe drank toe</h2>
+    <form action="#" th:action="@{/drink/save}" th:object="${drink}" method="post">
+    	<p>Type: <input type="text" th:field="*{drinkType}" /></p>
+    	<p>Naam: <input type="text" th:field="*{drinkName}" /></p>
+    	<p>Datum uitgave: <input type="text" th:field="*{dateFounded}" /></p>
+    	<p>Beschikbaarheid: <input type="text" th:field="*{availability}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</div>
+</div>
+<div id="footer">
+Sean van der Burg, 2015
+</div>
+
+</body>
+</html>
