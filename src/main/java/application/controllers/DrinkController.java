@@ -1,7 +1,10 @@
 package application.controllers;
 
-import application.models.Drink;
+import java.util.List;
+
+import application.entities.Drink;
 import application.models.DrinkDao;
+import application.models.DrinkRep;
 
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +16,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-//@RequestMapping(value = "/drink")
 public class DrinkController {
 
 	@Autowired
 	private DrinkDao _drinkDao;
 
+	@Autowired 
+	private DrinkRep drinkrep;
+	
 	@RequestMapping(value = "/delete")
 	@ResponseBody
 	public String delete(long id) {
+		drinkrep.save(arg0)
 		try {
 			Drink drink = new Drink(id);
 			_drinkDao.delete(drink);
@@ -44,21 +50,6 @@ public class DrinkController {
 		return "The Drink id is: " + drinkId;
 	}
 
-//	@RequestMapping(value = "/drink/save")
-//	@ResponseBody
-//	public String create(String drinktype, String drinkname,
-//			String dateFounded, boolean available) {
-//		try {
-//			Drink drink = new Drink(drinktype, drinkname, dateFounded,
-//					available);
-//
-//			_drinkDao.save(drink);
-//		} catch (Exception ex) {
-//			return ex.getMessage();
-//		}
-//		return "Drink succesfully saved!";
-//	}
-
 	@RequestMapping(value="/drink/save", method=RequestMethod.GET)
     public String drinkForm(Model model) {
         model.addAttribute("drink", new Drink());
@@ -73,5 +64,12 @@ public class DrinkController {
 		return "result";
 
 	}
-
+	
+//	@RequestMapping(value = "/drink/save", method = RequestMethod.GET)
+//    public String getAllDrinks(Model model)
+//    {
+//        List<Drink> drink = _drinkDao.getAll();
+//        model.addAttribute("drink", drink);
+//        return "drink";
+//    }
 }

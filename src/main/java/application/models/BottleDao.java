@@ -9,6 +9,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import application.entities.Bottle;
+
 @Repository
 @Transactional
 public class BottleDao {

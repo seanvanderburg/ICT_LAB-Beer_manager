@@ -9,6 +9,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import application.entities.Drink;
+
 @Repository
 @Transactional
 public class DrinkDao {
@@ -32,7 +34,7 @@ public class DrinkDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Drink> getAll() {
-		return getSession().createQuery("from Drink").list();
+		return getSession().createCriteria(Drink.class).list();
 	}
 
 	public Drink getById(long id) {
