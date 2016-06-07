@@ -4,7 +4,6 @@ import java.util.List;
 
 import application.entities.Drink;
 import application.models.DrinkDao;
-import application.models.DrinkRep;
 
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +20,13 @@ public class DrinkController {
 	@Autowired
 	private DrinkDao _drinkDao;
 
-	@Autowired 
-	private DrinkRep drinkrep;
+//	@Autowired 
+//	private DrinkRep drinkrep;
 	
 	@RequestMapping(value = "/delete")
 	@ResponseBody
 	public String delete(long id) {
-		drinkrep.save(arg0)
+//		drinkrep.save(arg0)
 		try {
 			Drink drink = new Drink(id);
 			_drinkDao.delete(drink);
