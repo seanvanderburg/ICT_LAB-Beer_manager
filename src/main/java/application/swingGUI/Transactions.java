@@ -1,8 +1,5 @@
 package application.swingGUI;
 
-
-import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -13,17 +10,16 @@ import application.entities.Neighbourhood;
 
 public class Transactions {
 
-
 	public static void addBottle(String capacity, String width, String height,
 			String dateScanned, String drink) {
 
 		Session session = (Session) HibernateUtil.getSessionFactory()
 				.getCurrentSession();
-		
+
 		session.beginTransaction();
 		Criteria criteria = session.createCriteria(Drink.class);
-		Drink relatedDrink = (Drink) criteria.add(Restrictions.eq("drinkName", drink))
-		                             .uniqueResult();
+		Drink relatedDrink = (Drink) criteria.add(
+				Restrictions.eq("drinkName", drink)).uniqueResult();
 		Bottle bottle = new Bottle();
 		bottle.setCapacity(capacity);
 		bottle.setWidth(width);
@@ -68,6 +64,5 @@ public class Transactions {
 		session.save(d);
 		session.getTransaction().commit();
 		System.out.println("Done");
-		// }
 	}
 }
