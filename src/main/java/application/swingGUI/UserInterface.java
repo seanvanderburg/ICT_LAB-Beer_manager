@@ -230,7 +230,7 @@ public class UserInterface {
 				String width = txtwidth.getText();
 				String length = txtlength.getText();
 				String datescanned = txtdatescanned.getText();
-				Transactions.addBottle(capacity, width, length, datescanned);
+				//Transactions.addBottle(capacity, width, length, datescanned);
 			}
 		});
 		
@@ -243,7 +243,7 @@ public class UserInterface {
 				String width = txtwidth.getText();
 				String length = txtlength.getText();
 				String datescanned = txtdatescanned.getText();
-				Transactions.addBottle(capacity, width, length, datescanned);
+				//Transactions.addBottle(capacity, width, length, datescanned);
 			}
 		});
 		
@@ -256,7 +256,7 @@ public class UserInterface {
 				String width = txtwidth.getText();
 				String length = txtlength.getText();
 				String datescanned = txtdatescanned.getText();
-				Transactions.addBottle(capacity, width, length, datescanned);
+				//Transactions.addBottle(capacity, width, length, datescanned);
 			}
 		});
 

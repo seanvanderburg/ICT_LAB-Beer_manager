@@ -40,9 +40,9 @@
         <property name="hbm2ddl.auto">update</property>
 
 
-        <mapping class="entities.Bottle" />
-        <mapping class="entities.Neighbourhood" />
-        <mapping class="entities.Drink" />
+        <mapping class="application.entities.Bottle" />
+        <mapping class="application.entities.Neighbourhood" />
+        <mapping class="application.entities.Drink" />
         
       
     </session-factory>

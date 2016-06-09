@@ -1,18 +1,21 @@
 package application.swingGUI;
 
+import java.io.IOException;
+
 import javax.swing.SwingUtilities;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
-
 public class GuiMain {
-	public static void main(String[] args) {				
-		 SwingUtilities.invokeLater(new Runnable() {
-		        public void run() {
-		            UserInterface gui = new UserInterface();
-		        }
-		    });
-		
+	public static void main(String[] args) {
+//		SwingUtilities.invokeLater(new Runnable() {
+//			public void run() {
+//				UserInterface gui = new UserInterface();
+//			}
+//		});
+		try {
+			BarcodeScanner.scanCode();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
+
