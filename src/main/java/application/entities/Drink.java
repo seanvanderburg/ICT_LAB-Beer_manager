@@ -26,6 +26,9 @@ public class Drink {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "drink", cascade = CascadeType.ALL)
 	private Set<Bottle> bottles = new HashSet<Bottle>();
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "drink", cascade = CascadeType.ALL)
+	private Set<Crate> crates = new HashSet<Crate>();
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Neighbourhood neigbourhood;

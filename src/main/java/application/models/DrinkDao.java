@@ -6,9 +6,11 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import barcodeScanner.HibernateUtil;
 import application.entities.Drink;
 
 @Repository
@@ -16,38 +18,35 @@ import application.entities.Drink;
 public class DrinkDao {
 
 	@Autowired
-	private SessionFactory _sessionFactory;
-
+	private SessionFactory sessionFactory;
+	
 	private Session getSession() {
-		return _sessionFactory.getCurrentSession();
+		return sessionFactory.getCurrentSession();
 	}
 
 	public void save(Drink drink) {
 		getSession().save(drink);
-		return;
 	}
 
 	public void delete(Drink drink) {
 		getSession().delete(drink);
-		return;
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Drink> getAll() {
-		return getSession().createCriteria(Drink.class).list();
+		Session session = sessionFactory.openSession(); 
+		List<Drink> drinks = session.createCriteria(Drink.class).list();
+		return drinks;
 	}
 
 	public Drink getById(long id) {
-		return (Drink) getSession().load(Drink.class, id);
+		Session session = sessionFactory.openSession();
+		return (Drink) session.load(Drink.class, id);
 	}
 
 	public Drink getByName(String drinkName) {
-		return (Drink) getSession().load(Drink.class, drinkName);
+		Session session = sessionFactory.openSession();
+		Drink drink = (Drink) session.createCriteria(Drink.class).add(Restrictions.eq("drinkName", drinkName)).uniqueResult();
+		return drink;
 	}
 
-	public void update(Drink drink) {
-		getSession().update(drink);
-		return;
-	}
-
-} // class UserDao
+} 

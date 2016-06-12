@@ -28,7 +28,7 @@
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
 
         <!-- Echo all executed SQL to stdout -->
-        <property name="show_sql">true</property>
+        <property name="show_sql">false</property>
 
         <!--
             validate: validate the schema, makes no changes to the database.
@@ -42,7 +42,9 @@
 
         <mapping class="application.entities.Bottle" />
         <mapping class="application.entities.Neighbourhood" />
+        <mapping class="application.entities.BottleType" />
         <mapping class="application.entities.Drink" />
+        <mapping class="application.entities.Crate" />
         
       
     </session-factory>

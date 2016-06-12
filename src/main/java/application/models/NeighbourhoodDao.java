@@ -9,42 +9,27 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import application.entities.Drink;
 import application.entities.Neighbourhood;
 
 @Repository
 @Transactional
 public class NeighbourhoodDao {
-  
-  @Autowired
-  private SessionFactory _sessionFactory;
-  
-  private Session getSession() {
-    return _sessionFactory.getCurrentSession();
-  }
 
-  public void save(Neighbourhood neig) {
-    getSession().save(neig);
-    return;
-  }
-  
-  public void delete(Neighbourhood neig) {
-    getSession().delete(neig);
-    return;
-  }
-  
-  @SuppressWarnings("unchecked")
-  public List<Neighbourhood> getAll() {
-    return getSession().createQuery("from Neighbourhood").list();
-  }
-  
+	@Autowired
+	private SessionFactory sessionFactory;
 
-  public Neighbourhood getById(long id) {
-    return (Neighbourhood) getSession().load(Neighbourhood.class, id);
-  }
+	private Session getSession() {
+		return sessionFactory.getCurrentSession();
+	}
 
-  public void update(Neighbourhood neig) {
-    getSession().update(neig);
-    return;
-  }
+	public void save(Neighbourhood neighbourhood) {
+		getSession().save(neighbourhood);
+		return;
+	}
 
-} // class UserDao
+	public void delete(Neighbourhood neighbourhood) {
+		getSession().delete(neighbourhood);
+		return;
+	}
+} 

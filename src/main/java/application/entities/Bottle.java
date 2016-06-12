@@ -14,14 +14,17 @@ public class Bottle {
     @Id 
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String width;
-    private String height;
-    private String capacity;
 	private String dateScanned;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Drink drink;
-  
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Crate crate;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private BottleType bottleType;
+	
     public Bottle() {}
     
     public Bottle(long id) { 
@@ -31,9 +34,6 @@ public class Bottle {
     public Bottle(String width, String height,
 			String capacity, String dateScanned) {
 		this();
-		this.width = width;
-		this.height = height;
-		this.capacity = capacity;
 		this.dateScanned = dateScanned;
 	}
    
@@ -47,30 +47,6 @@ public class Bottle {
         this.id = id;
     }
 
-	public String getWidth() {
-		return width;
-	}
-
-	public void setWidth(String width) {
-		this.width = width;
-	}
-
-	public String getHeight() {
-		return height;
-	}
-
-	public void setHeight(String height) {
-		this.height = height;
-	}
-
-	public String getCapacity() {
-		return capacity;
-	}
-
-	public void setCapacity(String capacity) {
-		this.capacity = capacity;
-	}
-
 	public String getDateScanned() {
 		return dateScanned;
 	}
@@ -78,7 +54,6 @@ public class Bottle {
 	public void setDateScanned(String dateScanned) {
 		this.dateScanned = dateScanned;
 	}
-	
 
 	public Drink getDrink() {
 		return drink;
@@ -88,14 +63,29 @@ public class Bottle {
 		this.drink = drink;
 	}
 
-	@Override
-	public String toString() {
-		return "Bottle [id=" + id + ", width=" + width
-				+ ", height=" + height + ", capacity=" + capacity
-				+ ", dateScanned=" + dateScanned + "]";
+	public Crate getCrate() {
+		return crate;
 	}
 
+	public void setCrate(Crate crate) {
+		this.crate = crate;
+	}
 	
+	public BottleType getBottleType() {
+		return bottleType;
+	}
+
+	public void setBottleType(BottleType bottleType) {
+		this.bottleType = bottleType;
+	}
+
+	@Override
+	public String toString() {
+		return "Bottle [id=" + id + ", dateScanned=" + dateScanned + ", drink="
+				+ drink + ", crate=" + crate + ", bottleType=" + bottleType
+				+ "]";
+	}
+
 
 }
 

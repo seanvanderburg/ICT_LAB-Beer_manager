@@ -18,35 +18,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class DrinkController {
 
 	@Autowired
-	private DrinkDao _drinkDao;
-
-//	@Autowired 
-//	private DrinkRep drinkrep;
+	private DrinkDao drinkDao;
 	
-	@RequestMapping(value = "/delete")
+	@RequestMapping(value = "/drink/delete")
 	@ResponseBody
 	public String delete(long id) {
-//		drinkrep.save(arg0)
 		try {
 			Drink drink = new Drink(id);
-			_drinkDao.delete(drink);
+			drinkDao.delete(drink);
 		} catch (Exception ex) {
 			return ex.getMessage();
 		}
-		return "User succesfully deleted!";
-	}
-
-	@RequestMapping(value = "/get-by-name")
-	@ResponseBody
-	public String getByName(String name) {
-		String drinkId;
-		try {
-			Drink drink = _drinkDao.getByName(name);
-			drinkId = String.valueOf(drink.getId());
-		} catch (Exception ex) {
-			return "Drink not found";
-		}
-		return "The Drink id is: " + drinkId;
+		return "Drink deleted";
 	}
 
 	@RequestMapping(value="/drink/save", method=RequestMethod.GET)
@@ -58,17 +41,24 @@ public class DrinkController {
 	@RequestMapping(value = "/drink/save", method = RequestMethod.POST)
 	public String addDrink(@ModelAttribute("drink") Drink drink) {
 
-		_drinkDao.save(drink);
+		drinkDao.save(drink);
 
 		return "result";
 
 	}
 	
-//	@RequestMapping(value = "/drink/save", method = RequestMethod.GET)
-//    public String getAllDrinks(Model model)
-//    {
-//        List<Drink> drink = _drinkDao.getAll();
-//        model.addAttribute("drink", drink);
-//        return "drink";
-//    }
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String showDrinks(Model model) {
+		
+		model.addAttribute("drink", drinkDao.getAll());
+		return "index";
+	}
+	
+//	@RequestMapping(value="/", method=RequestMethod.GET)
+//	public String showTable(Model model) {
+//		
+//		model.addAttribute("drink", drinkDao.getById(model.id));
+//		return "index";
+//	}
+	
 }

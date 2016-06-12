@@ -3,10 +3,12 @@
 <head>
     <title>Submission result</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="../static/css/styles.css"
+          th:href="@{/css/styles.css}"
+          rel="stylesheet" media="screen" />
 </head>
 <body>
-	<h1>Ingevoerd</h1>
-    <p th:text="'Naam: ' + ${drink.drinkName}" />
-    <a href="/drink/save">Voer nog een Drank in</a>
+	<h1>Gegevens ingevoerd</h1>
+    <a href="/">Terug naar de hoofdpagina</a>
 </body>
 </html>
