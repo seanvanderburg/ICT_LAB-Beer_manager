@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>De bierfabriek</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/styles.css"
+          th:href="@{/css/styles.css}"
+          rel="stylesheet" media="screen" />
+</head>
+<body>
+<div id="header">
+		<nav>
+		    
+			<ul class="menu">
+				<li><b></b><a href="/">Index</a></li>
+				<li><b></b><a href="/drink/save">Drank toevoegen</a></li>
+				<li class="active"><b></b><a href="/neigh/save">Buurt toevoegen</a></li>
+				
+			</ul>
+		</nav>
+</div>
+<div id="container">
+<div id="tekst">
+<h1>Buurt</h1>
+    <h2>Voeg een nieuwe buurt toe</h2>
+    <form action="#" th:action="@{/neigh/save}" th:object="${neighbourhood}" method="post">
+    	<p>Naam: <input type="text" th:field="*{name}" /></p>
+    	<p>Stad: <input type="text" th:field="*{city}" /></p>
+    	<p>Beschrijving: <input type="text" th:field="*{description}" /></p>
+        <p><input type="submit" value="Toevoegen" /> <input type="reset" value="Wissen" /></p>
+    </form>
+</div>
+</div>
+<div id="footer">
+Team ARIE, 2016
+</div>
+
+</body>
+</html>

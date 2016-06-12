@@ -1,18 +1,15 @@
 package application.controllers;
 
-import java.util.List;
-
-import application.entities.Drink;
-import application.models.DrinkDao;
-
-import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+
+import application.entities.Drink;
+import application.models.DrinkDao;
 
 @Controller
 public class DrinkController {
@@ -46,19 +43,6 @@ public class DrinkController {
 		return "result";
 
 	}
-	
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String showDrinks(Model model) {
 		
-		model.addAttribute("drink", drinkDao.getAll());
-		return "index";
-	}
-	
-//	@RequestMapping(value="/", method=RequestMethod.GET)
-//	public String showTable(Model model) {
-//		
-//		model.addAttribute("drink", drinkDao.getById(model.id));
-//		return "index";
-//	}
-	
+
 }

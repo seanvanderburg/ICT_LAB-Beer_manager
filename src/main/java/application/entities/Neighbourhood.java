@@ -1,7 +1,5 @@
 package application.entities;
 
-import java.sql.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +15,7 @@ public class Neighbourhood {
 	private Long id;
 	private String name;
 	private String city;
-	private Date description;
+	private String description;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Drink drink;
@@ -29,7 +27,7 @@ public class Neighbourhood {
 		this.id = id;
 	}
 
-	public Neighbourhood(String name, String city, Date description) {
+	public Neighbourhood(String name, String city, String description) {
 		this();
 		this.name = name;
 		this.city = city;
@@ -61,11 +59,11 @@ public class Neighbourhood {
 		this.city = city;
 	}
 
-	public Date getDescription() {
+	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(Date description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 

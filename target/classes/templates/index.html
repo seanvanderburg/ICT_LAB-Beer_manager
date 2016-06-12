@@ -12,7 +12,7 @@
 <div id="header">
 		<nav>
 			<ul class="menu">
-				<li class="active"><b></b><a href="/">Hoofdpagina</a></li>
+				<li class="active"><b></b><a href="/">Index</a></li>
 				<li><b></b><a href="/drink/save">Drank toevoegen</a></li>
 				<li><b></b><a href="/neigh/save">Buurt toevoegen</a></li>
 			</ul>
@@ -22,14 +22,8 @@
 <div id="tekst">
 
 <h1>De bierfabriek</h1>
-<p>Selecteer een buurt om alles te weten te komen over hun bier! </p>
+<p>Voeg een drank of buurt toe.</p>
    
-<select th:field="*{drink}">
-  <option th:each="drink : ${drinks}" 
-          th:value="${drink.drinkName}" 
-          th:text="#{${'seedstarter.drink.' + drink}}">Kiezen</option>
-</select>
-
 
 
 </div>
