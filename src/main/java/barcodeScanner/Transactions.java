@@ -20,7 +20,7 @@ public class Transactions {
 	public static void addBottle(String dateScanned, String drink,
 			String bottleType) {
 
-		Session session = (Session) HibernateUtil.getSessionFactory()
+		Session session = (Session) HibernateUtil.createSessionFactory()
 				.getCurrentSession();
 
 		session.beginTransaction();
