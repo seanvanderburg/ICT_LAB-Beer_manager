@@ -3,6 +3,7 @@ package application.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,19 +32,16 @@ public class NeighController {
 
 	@RequestMapping(value="/neigh/save", method=RequestMethod.GET)
     public String neighForm(Model model) {
-        model.addAttribute("neighbourhood", new Neighbourhood());
+        model.addAttribute("neigh", new Neighbourhood());
         return "neighbourhood";
     }
 	
 	@RequestMapping(value = "/neigh/save", method = RequestMethod.POST)
-	public String addNeigh(@ModelAttribute("neighbourhood") Neighbourhood neighbourhood) {
-
-		neighdao.save(neighbourhood);
-
+	public String addNeigh(@ModelAttribute("neigh") Neighbourhood neigh, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()){
+			return "neigh";	
+		}
+		neighdao.save(neigh);
 		return "result";
-
 	}
-	
-	
-	
 }

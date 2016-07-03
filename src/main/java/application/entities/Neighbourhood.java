@@ -7,14 +7,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Neighbourhood {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotNull
+	@Size(min = 1, message = "Naam is niet ingevoerd.")
 	private String name;
+	
+	@NotNull
+	@Size(min = 1, message = "Stad is niet ingevoerd.")
 	private String city;
+	
 	private String description;
 
 	@OneToOne(cascade = CascadeType.ALL)

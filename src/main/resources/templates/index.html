@@ -19,17 +19,43 @@
 		</nav>
 </div>
 <div id="container">
-<div id="tekst">
+<div id="text">
 
-<h1>De bierfabriek</h1>
-<p>Voeg een drank of buurt toe.</p>
-   
-
-
+<h1>Bierfabriek</h1>
+<p>Welkom bij Bierfabriek. Op deze site is te zien welke dranken worden aangeboden door buurten, en kunnen nieuwe dranken of buurten toegevoegd worden.</p>
+<div id="tables">
+<h2>De dranken</h2>
+ <table border="1">
+      <tr>
+      	<th>Type</th>
+      	<th>Naam</th>
+        <th>Datum gelanceerd</th>
+        <th>Beschikbaar</th>
+      </tr>
+      <tr th:each="drink : ${drinks}">
+      	<td th:text="${drink.drinkType}"></td>
+        <td th:text="${drink.drinkName}"></td>
+        <td th:text="${drink.dateFounded}"></td>
+        <td th:text="${drink.availability}"></td>
+      </tr>
+    </table>
+    
+<h2>De buurten</h2>
+ <table border="1">
+      <tr>
+      	<th>Naam</th>
+      	<th>Stad</th>
+      </tr>
+      <tr th:each="neigh : ${neighs}">
+      	<td th:text="${neigh.name}"></td>
+        <td th:text="${neigh.city}"></td>
+      </tr>
+    </table>
+</div>
 </div>
 </div>
 <div id="footer">
-Team ARIE, 2016
+<p>Team ARIE, 2016</p>
 </div>
 </body>
 </html>

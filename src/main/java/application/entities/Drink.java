@@ -1,5 +1,6 @@
 package application.entities;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,15 +13,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Drink {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotNull
+	@Size(min = 1, message = "Type is niet ingevoerd.")
 	private String drinkType;
+	
+	@NotNull
+	@Size(min = 1, message = "Naam is niet ingevoerd.")
 	private String drinkName;
-	private String dateFounded;
+	
+	//@NotNull(message = "Datum is niet ingevoerd, of in het verleden.")
+	private Date dateFounded;
+	
 	private boolean availability;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "drink", cascade = CascadeType.ALL)
@@ -30,7 +45,7 @@ public class Drink {
 	private Set<Crate> crates = new HashSet<Crate>();
 
 	@OneToOne(cascade = CascadeType.ALL)
-	private Neighbourhood neigbourhood;
+	private Neighbourhood neighbourhood;
 
 	public Drink() {
 	}
@@ -39,7 +54,7 @@ public class Drink {
 		this.id = id;
 	}
 
-	public Drink(String drinkType, String drinkName, String dateFounded,
+	public Drink(String drinkType, String drinkName, Date dateFounded,
 			boolean availability) {
 		this();
 		this.drinkType = drinkType;
@@ -73,11 +88,11 @@ public class Drink {
 		this.drinkName = drinkName;
 	}
 
-	public String getDateFounded() {
+	public Date getDateFounded() {
 		return dateFounded;
 	}
 
-	public void setDateFounded(String dateFounded) {
+	public void setDateFounded(Date dateFounded) {
 		this.dateFounded = dateFounded;
 	}
 
@@ -98,11 +113,11 @@ public class Drink {
 	}
 
 	public Neighbourhood getNeigbourhood() {
-		return neigbourhood;
+		return neighbourhood;
 	}
 
 	public void setNeigbourhood(Neighbourhood neigbourhood) {
-		this.neigbourhood = neigbourhood;
+		this.neighbourhood = neigbourhood;
 	}
 
 	@Override
@@ -110,7 +125,7 @@ public class Drink {
 		return "Drink [id=" + id + ", drinkType=" + drinkType + ", drinkName="
 				+ drinkName + ", dateFounded=" + dateFounded
 				+ ", availability=" + availability + ", bottles=" + bottles
-				+ ", neigbourhood=" + neigbourhood + "]";
+				+ ", neigbourhood=" + neighbourhood + "]";
 	}
 
 }

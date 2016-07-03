@@ -23,9 +23,11 @@
 <div id="tekst">
 <h1>Buurt</h1>
     <h2>Voeg een nieuwe buurt toe</h2>
-    <form action="#" th:action="@{/neigh/save}" th:object="${neighbourhood}" method="post">
+    <form action="#" th:action="@{/neigh/save}" th:object="${neigh}" method="post">
     	<p>Naam: <input type="text" th:field="*{name}" /></p>
+    	<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
     	<p>Stad: <input type="text" th:field="*{city}" /></p>
+    	<p th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
     	<p>Beschrijving: <input type="text" th:field="*{description}" /></p>
         <p><input type="submit" value="Toevoegen" /> <input type="reset" value="Wissen" /></p>
     </form>

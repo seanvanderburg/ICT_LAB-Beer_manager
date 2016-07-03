@@ -25,11 +25,19 @@
     <h2>Voeg een nieuwe drank toe</h2>
     <form action="#" th:action="@{/drink/save}" th:object="${drink}" method="post">
     	<p>Type: <input type="text" th:field="*{drinkType}" /></p>
+    	<p th:if="${#fields.hasErrors('drinkType')}" th:errors="*{drinkType}"></p>
     	<p>Naam: <input type="text" th:field="*{drinkName}" /></p>
-    	<p>Datum uitgave: <input type="text" th:field="*{dateFounded}" /></p>
-    	<p>Beschikbaarheid: (true/false) <input type="text" th:field="*{availability}" /></p>
+    	<p th:if="${#fields.hasErrors('drinkName')}" th:errors="*{drinkName}"></p>
+    	<p>Datum uitgave: <input type="date" th:field="*{dateFounded}" /></p>
+    	<p th:if="${#fields.hasErrors('dateFounded')}" th:errors="*{dateFounded}"></p>
+    	<p>Beschikbaarheid:  <select th:field="*{availability}">
+    	<option value="true">Beschikbaar</option>
+  		<option value="false">Niet beschikbaar</option>
+  		</select>
+  		</p>	
         <p><input type="submit" value="Toevoegen" /> <input type="reset" value="Wissen" /></p>
     </form>
+
 </div>
 </div>
 <div id="footer">

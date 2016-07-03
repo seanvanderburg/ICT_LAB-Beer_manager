@@ -1,5 +1,6 @@
 package application.models;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -31,8 +32,8 @@ public class DrinkDao {
 		getSession().delete(drink);
 	}
 
-	public List<Drink> getAll() {
-		Session session = sessionFactory.openSession(); 
+	public List<Drink> getAllDrinks() {
+		Session session = getSession(); 
 		List<Drink> drinks = session.createCriteria(Drink.class).list();
 		return drinks;
 	}
