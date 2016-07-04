@@ -29,6 +29,7 @@
     	<p>Stad: <input type="text" th:field="*{city}" /></p>
     	<p th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
     	<p>Beschrijving: <input type="text" th:field="*{description}" /></p>
+    	<p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
         <p><input type="submit" value="Toevoegen" /> <input type="reset" value="Wissen" /></p>
     </form>
 </div>

@@ -1,5 +1,6 @@
 package application.entities;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -33,7 +34,8 @@ public class Drink {
 	@Size(min = 1, message = "Naam is niet ingevoerd.")
 	private String drinkName;
 	
-	//@NotNull(message = "Datum is niet ingevoerd, of in het verleden.")
+	@NotNull(message = "Datum is niet geselecteerd.")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateFounded;
 	
 	private boolean availability;

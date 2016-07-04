@@ -33,9 +33,6 @@ public class BarcodeScanner {
 			scanDate = dateFormat.format(date);
 			bottleType = "beer";
 
-			PrintWriter out = new PrintWriter("scannedName.txt");
-			out.println(codeName + "\n");
-			out.close();
 
 			System.out.println(codeName + "\n");
 			Transactions.addBottle(scanDate, codeName, bottleType);

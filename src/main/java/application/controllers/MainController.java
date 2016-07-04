@@ -14,12 +14,13 @@ import application.models.NeighbourhoodDao;
 public class MainController {
 	@Autowired
 	private DrinkDao drinkDao;
+	@Autowired
 	private NeighbourhoodDao neighDao;
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
     public String getMainData(Model model) {
         model.addAttribute("drinks", drinkDao.getAllDrinks());
-        //model.addAttribute("neighs", neighDao.getAllNeighs());
+        model.addAttribute("neighs", neighDao.getAllNeighs());
         return "index";
     }
 }
