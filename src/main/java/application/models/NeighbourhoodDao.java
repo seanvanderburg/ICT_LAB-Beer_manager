@@ -9,7 +9,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import application.entities.Drink;
 import application.entities.Neighbourhood;
 
 @Repository
@@ -33,9 +32,8 @@ public class NeighbourhoodDao {
 		return;
 	}
 
-	public List<Neighbourhood> getAllNeighs() {
-		Session session = sessionFactory.openSession(); 
-		List<Neighbourhood> neighs = session.createCriteria(Neighbourhood.class).list();
+	public List<Neighbourhood> getAllNeighbourhoods() {
+		List<Neighbourhood> neighs = getSession().createCriteria(Neighbourhood.class).list();
 		return neighs;
 	}
 

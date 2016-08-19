@@ -1,6 +1,5 @@
 package application.entities;
 
-import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,11 +13,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Drink {
@@ -41,10 +41,8 @@ public class Drink {
 	private boolean availability;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "drink", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private Set<Bottle> bottles = new HashSet<Bottle>();
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "drink", cascade = CascadeType.ALL)
-	private Set<Crate> crates = new HashSet<Crate>();
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Neighbourhood neighbourhood;

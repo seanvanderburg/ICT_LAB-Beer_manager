@@ -20,7 +20,7 @@ public class MainController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
     public String getMainData(Model model) {
         model.addAttribute("drinks", drinkDao.getAllDrinks());
-        model.addAttribute("neighs", neighDao.getAllNeighs());
+        model.addAttribute("neighs", neighDao.getAllNeighbourhoods());
         return "index";
     }
 }

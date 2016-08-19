@@ -39,13 +39,11 @@ public class DrinkDao {
 	}
 
 	public Drink getById(long id) {
-		Session session = sessionFactory.openSession();
-		return (Drink) session.load(Drink.class, id);
+		return (Drink) getSession().load(Drink.class, id);
 	}
 
 	public Drink getByName(String drinkName) {
-		Session session = sessionFactory.openSession();
-		Drink drink = (Drink) session.createCriteria(Drink.class).add(Restrictions.eq("drinkName", drinkName)).uniqueResult();
+		Drink drink = (Drink) getSession().createCriteria(Drink.class).add(Restrictions.eq("drinkName", drinkName)).uniqueResult();
 		return drink;
 	}
 

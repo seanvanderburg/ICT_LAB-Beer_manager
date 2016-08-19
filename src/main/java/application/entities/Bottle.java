@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Bottle {
     @Id 
@@ -16,11 +18,10 @@ public class Bottle {
     private Long id;
 	private String dateScanned;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Drink drink;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Crate crate;
+	@JsonBackReference
+    private Drink drink;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private BottleType bottleType;
@@ -31,8 +32,7 @@ public class Bottle {
         this.id = id;
       }
 
-    public Bottle(String width, String height,
-			String capacity, String dateScanned) {
+    public Bottle(String dateScanned) {
 		this();
 		this.dateScanned = dateScanned;
 	}
@@ -63,14 +63,6 @@ public class Bottle {
 		this.drink = drink;
 	}
 
-	public Crate getCrate() {
-		return crate;
-	}
-
-	public void setCrate(Crate crate) {
-		this.crate = crate;
-	}
-	
 	public BottleType getBottleType() {
 		return bottleType;
 	}
@@ -82,7 +74,7 @@ public class Bottle {
 	@Override
 	public String toString() {
 		return "Bottle [id=" + id + ", dateScanned=" + dateScanned + ", drink="
-				+ drink + ", crate=" + crate + ", bottleType=" + bottleType
+				+ drink + ", bottleType=" + bottleType
 				+ "]";
 	}
 

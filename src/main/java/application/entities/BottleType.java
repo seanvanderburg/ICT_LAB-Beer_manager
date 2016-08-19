@@ -35,7 +35,6 @@ public class BottleType {
 		this();
 		this.type = type;
 		this.capacityInCL = capacityInCL;
-
 	}
 
 	@Column(name = "bottle_id", unique = true, nullable = false)
