@@ -16,7 +16,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class DatabaseConfig {
 
-  @Value("${db.driver}")
+
+@Value("${db.driver}")
   private String DB_DRIVER;
   
   @Value("${db.password}")
@@ -37,6 +38,9 @@ public class DatabaseConfig {
   @Value("${hibernate.hbm2ddl.auto}")
   private String HIBERNATE_HBM2DDL_AUTO;
 
+  @Value("${hibernate.generate_statistics}")
+  private String HIBERNATE_GENERATE_STATISTICS;
+  
   @Value("${entitymanager.packagesToScan}")
   private String ENTITYMANAGER_PACKAGES_TO_SCAN;
   
@@ -59,6 +63,7 @@ public class DatabaseConfig {
     hibernateProperties.put("hibernate.dialect", HIBERNATE_DIALECT);
     hibernateProperties.put("hibernate.show_sql", HIBERNATE_SHOW_SQL);
     hibernateProperties.put("hibernate.hbm2ddl.auto", HIBERNATE_HBM2DDL_AUTO);
+    hibernateProperties.put("hibernate.generate_statistics", HIBERNATE_GENERATE_STATISTICS);
     sessionFactoryBean.setHibernateProperties(hibernateProperties);
     
     return sessionFactoryBean;
@@ -72,4 +77,4 @@ public class DatabaseConfig {
     return transactionManager;
   }
 
-} // class DatabaseConfig
+}

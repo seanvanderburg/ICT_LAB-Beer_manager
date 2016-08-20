@@ -46,7 +46,6 @@
         <mapping class="application.entities.Neighbourhood" />
         <mapping class="application.entities.BottleType" />
         <mapping class="application.entities.Drink" />
-        <mapping class="application.entities.Crate" />
         
       
     </session-factory>
