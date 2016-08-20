@@ -25,10 +25,10 @@
     <h2>Voeg een nieuwe drank toe</h2>
     <form action="#" th:action="@{/drink/save}" th:object="${drink}" method="post">
     	<p>Type:  <select th:field="*{drinkType}">
-    	<option value="true">Bier</option>
-  		<option value="false">Wijn</option>
-  		<option value="false">Sterke drank</option>
-  		<option value="false">Overige drank</option>
+    	<option value="Bier">Bier</option>
+  		<option value="Wijn">Wijn</option>
+  		<option value="Sterke drank">Sterke drank</option>
+  		<option value="Overige drank">Overige drank</option>
   		</select>
     	</p>
     	<p>Naam: <input type="text" th:field="*{drinkName}" /></p>

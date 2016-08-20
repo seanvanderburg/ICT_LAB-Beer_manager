@@ -3,6 +3,8 @@ package application.models;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
@@ -19,7 +21,7 @@ public class DrinkDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	private Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
@@ -33,13 +35,15 @@ public class DrinkDao {
 	}
 
 	public List<Drink> getAllDrinks() {
-		Session session = getSession(); 
-		List<Drink> drinks = session.createCriteria(Drink.class).list();
+		List<Drink> drinks = getSession().createCriteria(Drink.class).list();
 		return drinks;
 	}
 
 	public Drink getById(long id) {
-		return (Drink) getSession().load(Drink.class, id);
+		Drink drink = (Drink) getSession().get(Drink.class, id);
+
+		//Drink drink = (Drink) getSession().createCriteria(Drink.class).add(Restrictions.eq("id", id)).uniqueResult();
+		return drink;
 	}
 
 	public Drink getByName(String drinkName) {

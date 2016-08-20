@@ -2,16 +2,12 @@ application\entities\Neighbourhood.class
 application\models\BottleDao.class
 application\controllers\BottleController.class
 application\controllers\MainController.class
-application\transactions\Transactions.class
 application\transactions\HibernateUtil.class
 application\Application.class
-application\controllers\BottleTypeController.class
 application\configs\DatabaseConfig.class
 application\entities\BottleType.class
 application\entities\Bottle.class
 application\models\NeighbourhoodDao.class
-application\controllers\NeighController.class
 application\models\DrinkDao.class
 application\entities\Drink.class
 application\controllers\DrinkController.class
-application\models\BottleTypeDao.class

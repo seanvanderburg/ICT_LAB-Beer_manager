@@ -24,12 +24,10 @@ public class NeighbourhoodDao {
 
 	public void save(Neighbourhood neighbourhood) {
 		getSession().save(neighbourhood);
-		return;
 	}
 
 	public void delete(Neighbourhood neighbourhood) {
 		getSession().delete(neighbourhood);
-		return;
 	}
 
 	public List<Neighbourhood> getAllNeighbourhoods() {

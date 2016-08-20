@@ -20,7 +20,6 @@ public class Bottle {
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JsonBackReference
     private Drink drink;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

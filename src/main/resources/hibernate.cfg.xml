@@ -19,7 +19,6 @@
 
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-
 		
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
@@ -29,6 +28,9 @@
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">false</property>
+
+		<property name="hibernate.generate_statistics">true</property>
+
 
         <!--
             validate: validate the schema, makes no changes to the database.

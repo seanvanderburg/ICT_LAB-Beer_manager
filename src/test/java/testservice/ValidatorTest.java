@@ -14,23 +14,34 @@ import javax.validation.ValidatorFactory;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import testlauncher.AbstractTest;
+import application.Application;
 import application.entities.Drink;
 
-public class ValidatorTest extends AbstractTest {
+/**
+ * Test Constraint validations on Drink Entity: no violations of constraints are allowed 
+ * @author Sean
+ *
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = Application.class)
+public class ValidatorTest{
 
 	private static Validator validator;
 	private Date date;
 	private Calendar cal = Calendar.getInstance();
 
+	//Build validator
 	@BeforeClass
 	public static void before() {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
 
-
+	//Set up the date object, use a date in the past to test validation fail
 	@Before
 	public void setUp() throws Exception {
 		cal.set(Calendar.MONTH, 9);
@@ -38,7 +49,8 @@ public class ValidatorTest extends AbstractTest {
 		cal.set(Calendar.YEAR, 2017);
 		date = cal.getTime();
 	}
-
+	
+	//Test the attributes, drinktype and drinkname may not be null, replace attributes with null to test the validation fail
 	@Test
 	public void validateAttributes() {
 		Drink drink = new Drink("Drinktype", "Drinkname", date, false);

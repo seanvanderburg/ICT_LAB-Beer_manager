@@ -31,7 +31,7 @@ public class BottleController {
     }
 	
 	@RequestMapping(value = "/bottle/", method = RequestMethod.POST)
-	public ResponseEntity<String> addBottle(@RequestBody Bottle bottle, UriComponentsBuilder ucBuilder) {
+	public ResponseEntity<String> addBottle(@RequestBody Bottle bottle) {
 		bottleDao.save(bottle);
 		return new ResponseEntity<String>(HttpStatus.CREATED);
 	}
