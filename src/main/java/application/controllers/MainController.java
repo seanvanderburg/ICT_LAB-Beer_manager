@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import application.models.DrinkDao;
 import application.models.NeighbourhoodDao;
 
-
+/**
+ * MainController, handles ../ related API requests on index page
+ * @author Sean
+ *
+ */
 @Controller
 public class MainController {
 	@Autowired
@@ -17,6 +21,11 @@ public class MainController {
 	@Autowired
 	private NeighbourhoodDao neighbourhoodDao;
 	
+	/**
+	 * main page getter, initialises thymeleaf template
+	 * @param model to be used for data
+	 * @return thymeleaf index
+	 */
 	@RequestMapping(value="/", method=RequestMethod.GET)
     public String getMainData(Model model) {
         model.addAttribute("drinks", drinkDao.getAllDrinks());

@@ -12,7 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
+/**
+ * @author Sean bottletype entity
+ */
 @Entity
 public class BottleType {
 	@Id
@@ -31,33 +33,57 @@ public class BottleType {
 		this.id = id;
 	}
 
+	/**
+	 * constructor
+	 * 
+	 * @param type
+	 * @param capacityInCL
+	 */
 	public BottleType(String type, int capacityInCL) {
 		this();
 		this.type = type;
 		this.capacityInCL = capacityInCL;
 	}
 
+	/**
+	 * @return id
+	 */
 	@Column(name = "bottle_id", unique = true, nullable = false)
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return type
+	 */
 	public String getType() {
 		return type;
 	}
 
+	/**
+	 * @param type
+	 */
 	public void setType(String type) {
 		this.type = type;
 	}
 
+	/**
+	 * @return capacityInCL
+	 */
 	public int getcapacityInCL() {
 		return capacityInCL;
 	}
 
+	/**
+	 * @param capacityInCL
+	 */
 	public void setcapacityInCL(int capacityInCL) {
 		this.capacityInCL = capacityInCL;
 	}

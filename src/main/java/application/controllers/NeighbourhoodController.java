@@ -19,12 +19,22 @@ import application.entities.Drink;
 import application.entities.Neighbourhood;
 import application.models.NeighbourhoodDao;
 
+/**
+ * NeighbourhoodController, handles ../neighbourhood/ related API requests
+ * @author Sean
+ *
+ */
 @Controller
 public class NeighbourhoodController {
 
 	@Autowired
 	private NeighbourhoodDao neighbourhoodDao;
 	
+	/**
+	 * delete a neighbourhood
+	 * @param id
+	 * @return message
+	 */
 	@RequestMapping(value = "/neighbourhood/delete")
 	@ResponseBody
 	public String delete(long id) {
@@ -37,22 +47,37 @@ public class NeighbourhoodController {
 		return "Neighbourhood deleted";
 	}
 
+	/**
+	 * initialise thymeleaf creation form
+	 * @param model to be used for form
+	 * @return mapping
+	 */
 	@RequestMapping(value="/neighbourhood/save", method=RequestMethod.GET)
     public String neighForm(Model model) {
         model.addAttribute("neighbourhood", new Neighbourhood());
         return "neighbourhood";
     }
 	
+	/**
+	 * post a neighbourhood
+	 * @param neighbourhood to be saved
+	 * @param bindingResult (validation)
+	 * @param model to be used
+	 * @return
+	 */
 	@RequestMapping(value = "/neighbourhood/save", method = RequestMethod.POST)
-	public String addNeigh(@ModelAttribute("neighbourhood") Neighbourhood neigh, BindingResult bindingResult, Model model) {
+	public String addNeigh(@ModelAttribute("neighbourhood") Neighbourhood neighbourhood, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()){
 			return "neighbourhood";	
 		}
-		neighbourhoodDao.save(neigh);
+		neighbourhoodDao.save(neighbourhood);
 		return "result";
 	}
 	
-	
+	/**
+	 * get a list of neighbourhoods
+	 * @return neighbourhood list of objects
+	 */
 	@RequestMapping(value = "/neighbourhood/", method = RequestMethod.GET)
     public ResponseEntity<List<Neighbourhood>> listAllNeighbourhoods() {
         List<Neighbourhood> neighbourhoods = neighbourhoodDao.getAllNeighbourhoods();
@@ -62,6 +87,11 @@ public class NeighbourhoodController {
         return new ResponseEntity<List<Neighbourhood>>(neighbourhoods, HttpStatus.OK);
     }
 	
+	/**
+	 * get neighbourhood by ID
+	 * @param id
+	 * @return object and OK status
+	 */
 	@RequestMapping(value = "/neighbourhood/{id}", method = RequestMethod.GET)
     public ResponseEntity<Neighbourhood> listDrinkById(@PathVariable("id") long id) {
         Neighbourhood neighbourhood = neighbourhoodDao.getById(id);
@@ -71,6 +101,11 @@ public class NeighbourhoodController {
         return new ResponseEntity<Neighbourhood>(neighbourhood, HttpStatus.OK);
     }
 	
+	/**
+	 * post a new neighbourhood
+	 * @param neighbourhood to be added
+	 * @return OK status
+	 */
 	@RequestMapping(value = "/neighbourhood/", method = RequestMethod.POST)
 	public ResponseEntity<String> addNeighbourhood(@RequestBody Neighbourhood neighbourhood) {
 		neighbourhoodDao.save(neighbourhood);

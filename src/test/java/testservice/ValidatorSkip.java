@@ -29,7 +29,7 @@ import application.entities.Neighbourhood;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-public class ValidatorTest{
+public class ValidatorSkip{
 
 	private static Validator validator;
 	private Date date;

@@ -16,10 +16,19 @@ import org.springframework.stereotype.Repository;
 import application.entities.Bottle;
 import application.entities.Drink;
 
+/**
+ * Handles Bottle Entity CRUD operations using Hibernate session
+ * 
+ * @author Sean
+ *
+ */
 @Repository
 @Transactional
 public class BottleDao {
 
+	/**
+	 * get session
+	 */
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -27,19 +36,35 @@ public class BottleDao {
 		return sessionFactory.getCurrentSession();
 	}
 
+	/**
+	 * 
+	 * @param bottle
+	 *            from controller
+	 */
 	public void save(Bottle bottle) {
 
 		Drink drink = bottle.getDrink();
 		String drinkName = drink.getDrinkName();
-		bottle.setDrink((Drink) getSession().createCriteria(Drink.class).add(Restrictions.eq("drinkName", drinkName)).uniqueResult());
+		bottle.setDrink((Drink) getSession().createCriteria(Drink.class)
+				.add(Restrictions.eq("drinkName", drinkName)).uniqueResult());
 		getSession().save(bottle);
 	}
 
+	/**
+	 * 
+	 * @param id
+	 *            from controller
+	 * @return bottle based on id
+	 */
 	public Bottle getById(long id) {
 		Bottle bottle = (Bottle) getSession().get(Bottle.class, id);
 		return bottle;
 	}
 
+	/**
+	 * 
+	 * @return list of bottles
+	 */
 	public List<Bottle> getAllBottles() {
 		List<Bottle> bottles = getSession().createCriteria(Bottle.class).list();
 

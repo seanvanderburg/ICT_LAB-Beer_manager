@@ -11,7 +11,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+/**
+ * neighbourhood entity
+ * @author Sean
+ *
+ */
 @Entity
 public class Neighbourhood {
 	@Id
@@ -39,6 +43,12 @@ public class Neighbourhood {
 		this.id = id;
 	}
 
+	/**
+	 * constructor
+	 * @param name
+	 * @param city
+	 * @param description
+	 */
 	public Neighbourhood(String name, String city, String description) {
 		this();
 		this.name = name;
@@ -46,43 +56,73 @@ public class Neighbourhood {
 		this.description = description;
 	}
 
+	/**
+	 * @return id
+	 */
 	@Column(name = "neigbourhood_id", unique = true, nullable = false)
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @return city
+	 */
 	public String getCity() {
 		return city;
 	}
 
+	/**
+	 * @param city
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
+	/**
+	 * @return description
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * @param description
+	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	/**
+	 * @return drink
+	 */
 	public Drink getDrink() {
 		return drink;
 	}
 
+	/**
+	 * @param drink
+	 */
 	public void setDrink(Drink drink) {
 		this.drink = drink;
 	}

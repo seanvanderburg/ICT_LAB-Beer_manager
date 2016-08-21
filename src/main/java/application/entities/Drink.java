@@ -18,28 +18,31 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+/**
+ * @author Sean 
+ * drink entity
+ */
 
 @Entity
 public class Drink {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	@Size(min = 1, message = "Type is niet ingevoerd.")
 	private String drinkType;
-	
+
 	@NotNull
 	@Size(min = 1, message = "Naam is niet ingevoerd.")
 	private String drinkName;
-	
+
 	@NotNull(message = "Datum is niet geselecteerd.")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateFounded;
-	
+
 	private boolean availability;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "drink", cascade = CascadeType.ALL)
@@ -56,6 +59,14 @@ public class Drink {
 		this.id = id;
 	}
 
+	/**
+	 * constructor
+	 * 
+	 * @param drinkType
+	 * @param drinkName
+	 * @param dateFounded
+	 * @param availability
+	 */
 	public Drink(String drinkType, String drinkName, Date dateFounded,
 			boolean availability) {
 		this();
@@ -65,59 +76,112 @@ public class Drink {
 		this.availability = availability;
 	}
 
+	/**
+	 * @return id
+	 */
 	@Column(name = "drink_id", unique = true, nullable = false)
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * @param id
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * 
+	 * @return drinkType
+	 */
 	public String getDrinkType() {
 		return drinkType;
 	}
 
+	/**
+	 * @param drinkType
+	 */
 	public void setDrinkType(String drinkType) {
 		this.drinkType = drinkType;
 	}
 
+	/**
+	 * 
+	 * @return drinkName
+	 */
 	public String getDrinkName() {
 		return drinkName;
 	}
 
+	/**
+	 * 
+	 * @param drinkName
+	 */
 	public void setDrinkName(String drinkName) {
 		this.drinkName = drinkName;
 	}
 
+	/**
+	 * 
+	 * @return dateFounded
+	 */
 	public Date getDateFounded() {
 		return dateFounded;
 	}
 
+	/**
+	 * 
+	 * @param dateFounded
+	 */
 	public void setDateFounded(Date dateFounded) {
 		this.dateFounded = dateFounded;
 	}
 
+	/**
+	 * 
+	 * @return availability
+	 */
 	public boolean isAvailability() {
 		return availability;
 	}
 
+	/**
+	 * 
+	 * @param availability
+	 */
 	public void setAvailability(boolean availability) {
 		this.availability = availability;
 	}
 
+	/**
+	 * 
+	 * @return bottles
+	 */
 	public Set<Bottle> getBottles() {
 		return bottles;
 	}
 
+	/**
+	 * 
+	 * @param bottles
+	 */
 	public void setBottles(Set<Bottle> bottles) {
 		this.bottles = bottles;
 	}
 
+	/**
+	 * 
+	 * @return neighbourhood
+	 */
 	public Neighbourhood getNeigbourhood() {
 		return neighbourhood;
 	}
 
+	/**
+	 * 
+	 * @param neigbourhood
+	 */
 	public void setNeigbourhood(Neighbourhood neigbourhood) {
 		this.neighbourhood = neigbourhood;
 	}
