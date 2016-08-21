@@ -18,6 +18,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -42,7 +43,7 @@ public class Drink {
 	private boolean availability;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "drink", cascade = CascadeType.ALL)
-	@JsonIgnore
+	@JsonManagedReference
 	private Set<Bottle> bottles = new HashSet<Bottle>();
 
 	@OneToOne(cascade = CascadeType.ALL)

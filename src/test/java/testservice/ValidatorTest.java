@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import application.Application;
 import application.entities.Drink;
+import application.entities.Neighbourhood;
 
 /**
  * Test Constraint validations on Drink Entity: no violations of constraints are allowed 
@@ -52,9 +53,16 @@ public class ValidatorTest{
 	
 	//Test the attributes, drinktype and drinkname may not be null, replace attributes with null to test the validation fail
 	@Test
-	public void validateAttributes() {
+	public void validateDrinkAttributes() {
 		Drink drink = new Drink("Drinktype", "Drinkname", date, false);
 		Set<ConstraintViolation<Drink>> constraintViolations = validator.validate( drink );
+			assertEquals( 0, constraintViolations.size() );
+	}
+	
+	@Test
+	public void validateNeighbourhoodAttributes() {
+		Neighbourhood neighbourhood = new Neighbourhood("Naam", "Stad", "Omschrijving");
+		Set<ConstraintViolation<Neighbourhood>> constraintViolations = validator.validate( neighbourhood );
 			assertEquals( 0, constraintViolations.size() );
 	}
 }

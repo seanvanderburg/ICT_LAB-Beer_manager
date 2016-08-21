@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -34,13 +35,14 @@ public class BottleDao {
 		getSession().save(bottle);
 	}
 
-	public Bottle getById(String bottleId) {
-		Bottle bottle = (Bottle) getSession().createCriteria(Bottle.class).add(Restrictions.eq("bottleId", bottleId)).uniqueResult();
+	public Bottle getById(long id) {
+		Bottle bottle = (Bottle) getSession().get(Bottle.class, id);
 		return bottle;
 	}
 
 	public List<Bottle> getAllBottles() {
 		List<Bottle> bottles = getSession().createCriteria(Bottle.class).list();
+
 		return bottles;
 	}
 

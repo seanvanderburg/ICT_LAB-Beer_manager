@@ -14,7 +14,7 @@
 			<ul class="menu">
 				<li class="active"><b></b><a href="/">Index</a></li>
 				<li><b></b><a href="/drink/save">Drank toevoegen</a></li>
-				<li><b></b><a href="/neigh/save">Buurt toevoegen</a></li>
+				<li><b></b><a href="/neighbourhood/save">Buurt toevoegen</a></li>
 			</ul>
 		</nav>
 </div>
@@ -46,9 +46,9 @@
       	<th>Naam</th>
       	<th>Stad</th>
       </tr>
-      <tr th:each="neigh : ${neighs}">
-      	<td th:text="${neigh.name}"></td>
-        <td th:text="${neigh.city}"></td>
+      <tr th:each="neighbourhood : ${neighbourhoods}">
+      	<td th:text="${neighbourhood.name}"></td>
+        <td th:text="${neighbourhood.city}"></td>
       </tr>
     </table>
 </div>

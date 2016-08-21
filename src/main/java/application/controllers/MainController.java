@@ -15,12 +15,12 @@ public class MainController {
 	@Autowired
 	private DrinkDao drinkDao;
 	@Autowired
-	private NeighbourhoodDao neighDao;
+	private NeighbourhoodDao neighbourhoodDao;
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
     public String getMainData(Model model) {
         model.addAttribute("drinks", drinkDao.getAllDrinks());
-        model.addAttribute("neighs", neighDao.getAllNeighbourhoods());
+        model.addAttribute("neighbourhoods", neighbourhoodDao.getAllNeighbourhoods());
         return "index";
     }
 }

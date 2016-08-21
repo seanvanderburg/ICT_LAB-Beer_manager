@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Bottle {
@@ -20,9 +22,11 @@ public class Bottle {
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonBackReference
     private Drink drink;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
     private BottleType bottleType;
 	
     public Bottle() {}

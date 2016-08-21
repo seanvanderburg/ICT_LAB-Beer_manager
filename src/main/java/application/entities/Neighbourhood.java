@@ -10,6 +10,8 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Neighbourhood {
 	@Id
@@ -27,6 +29,7 @@ public class Neighbourhood {
 	private String description;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Drink drink;
 
 	public Neighbourhood() {

@@ -14,7 +14,7 @@
 			<ul class="menu">
 				<li><b></b><a href="/">Index</a></li>
 				<li><b></b><a href="/drink/save">Drank toevoegen</a></li>
-				<li class="active"><b></b><a href="/neigh/save">Buurt toevoegen</a></li>
+				<li class="active"><b></b><a href="/neighbourhood/save">Buurt toevoegen</a></li>
 				
 			</ul>
 		</nav>
@@ -23,7 +23,7 @@
 <div id="tekst">
 <h1>Buurt</h1>
     <h2>Voeg een nieuwe buurt toe</h2>
-    <form action="#" th:action="@{/neigh/save}" th:object="${neigh}" method="post">
+    <form action="#" th:action="@{/neighbourhood/save}" th:object="${neighbourhood}" method="post">
     	<p>Naam: <input type="text" th:field="*{name}" /></p>
     	<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
     	<p>Stad: <input type="text" th:field="*{city}" /></p>
