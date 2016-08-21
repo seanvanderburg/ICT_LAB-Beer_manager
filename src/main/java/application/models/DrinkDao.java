@@ -1,20 +1,13 @@
 package application.models;
 
-import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.search.jpa.FullTextEntityManager;
-import org.hibernate.search.query.dsl.QueryBuilder;
-import org.hibernate.stat.SessionStatistics;
-import org.hibernate.stat.Statistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -82,7 +75,6 @@ public class DrinkDao {
 	}
 
 	/**
-	 * 
 	 * @param drinkName from controller
 	 * @return drink that matches name
 	 */

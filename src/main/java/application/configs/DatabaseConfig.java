@@ -51,7 +51,7 @@ public class DatabaseConfig {
   
   /**
    * Init DB connection/credentials
-   * @return
+   * @return dataSource
    */
   @Bean
   public DataSource dataSource() {
@@ -66,7 +66,7 @@ public class DatabaseConfig {
   
   /**
    * Sessionfactory and configuration properties
-   * @return
+   * @return sessionFactoryBean
    */
   @Bean
   public LocalSessionFactoryBean sessionFactory() {
@@ -85,7 +85,7 @@ public class DatabaseConfig {
 
   /**
    * Init transactionmanager
-   * @return
+   * @return transactionManager
    */
   @Bean
   public HibernateTransactionManager transactionManager() {

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import application.entities.Drink;
 import application.entities.Neighbourhood;
 import application.models.NeighbourhoodDao;
 
@@ -63,7 +62,7 @@ public class NeighbourhoodController {
 	 * @param neighbourhood to be saved
 	 * @param bindingResult (validation)
 	 * @param model to be used
-	 * @return
+	 * @return result template
 	 */
 	@RequestMapping(value = "/neighbourhood/save", method = RequestMethod.POST)
 	public String addNeigh(@ModelAttribute("neighbourhood") Neighbourhood neighbourhood, BindingResult bindingResult, Model model) {

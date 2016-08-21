@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import application.entities.Bottle;
 import application.entities.Drink;
 import application.models.DrinkDao;
 
@@ -70,7 +69,7 @@ public class DrinkController {
 	 * @param drink to be saved
 	 * @param bindingResult validation result
 	 * @param model attribute tied to model
-	 * @return
+	 * @return result template
 	 */
 	@RequestMapping(value = "/drink/save", method = RequestMethod.POST)
 	public String submitForm(@Valid @ModelAttribute("drink") Drink drink, BindingResult bindingResult, Model model) {

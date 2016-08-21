@@ -3,7 +3,6 @@ package application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import application.transactions.PerformanceTest;
 /**
  * Run the spring (boot) application
  * @author Sean
@@ -17,6 +16,5 @@ public class Application {
 	 */
   public static void main(String[] args) {
 	  SpringApplication.run(Application.class, args);
-	  //PerformanceTest.runtest();
   }
 }

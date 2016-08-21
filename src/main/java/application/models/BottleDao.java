@@ -2,11 +2,8 @@ package application.models;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -18,7 +15,6 @@ import application.entities.Drink;
 
 /**
  * Handles Bottle Entity CRUD operations using Hibernate session
- * 
  * @author Sean
  *
  */
@@ -38,22 +34,23 @@ public class BottleDao {
 
 	/**
 	 * 
-	 * @param bottle
-	 *            from controller
+	 * @param bottle from controller
 	 */
 	public void save(Bottle bottle) {
 
 		Drink drink = bottle.getDrink();
-		String drinkName = drink.getDrinkName();
-		bottle.setDrink((Drink) getSession().createCriteria(Drink.class)
-				.add(Restrictions.eq("drinkName", drinkName)).uniqueResult());
+		if (drink != null) {
+			String drinkName = drink.getDrinkName();
+			bottle.setDrink((Drink) getSession().createCriteria(Drink.class)
+					.add(Restrictions.eq("drinkName", drinkName))
+					.uniqueResult());
+		}
 		getSession().save(bottle);
 	}
 
 	/**
 	 * 
-	 * @param id
-	 *            from controller
+	 * @param id from controller
 	 * @return bottle based on id
 	 */
 	public Bottle getById(long id) {
@@ -67,7 +64,6 @@ public class BottleDao {
 	 */
 	public List<Bottle> getAllBottles() {
 		List<Bottle> bottles = getSession().createCriteria(Bottle.class).list();
-
 		return bottles;
 	}
 
