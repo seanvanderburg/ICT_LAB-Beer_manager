@@ -3,7 +3,6 @@ package application.models;
 import java.util.List;
 
 import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
